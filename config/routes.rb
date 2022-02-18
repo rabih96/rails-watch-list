@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'lists#index'
   resources :lists, only: %i[index show create new] do
     resources :bookmarks, only: %i[index create new]
   end

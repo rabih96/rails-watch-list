@@ -1,11 +1,16 @@
-<div class="container">
-  <h1><%= @list.name %></h1>
-  <%= link_to 'Add New Movie', new_list_bookmark_path(@list), class:"btn btn-outline-success mb-3" %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)), url('<%= cl_image_path @list.photo.key %>');">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <br>
+    <%= link_to 'Add New Movie', new_list_bookmark_path(@list), class:"btn btn-outline-success" %>
+  </div>
+</div>
+<div class="container mt-3">
   <div class="row row-cols-3">
     <% @movies.each do |movie| %>
       <% @bookmark = Bookmark.where(movie: movie, list: @list).first %>
       <div class="col">
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3 mt-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="<%= movie.poster_url %>" class="img-fluid rounded-start" alt="movie poster">
